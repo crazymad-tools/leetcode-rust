@@ -1,0 +1,91 @@
+/*
+ * @lc app=leetcode.cn id=2 lang=rust
+ *
+ * [2] 两数相加
+ */
+
+// @lc code=start
+// Definition for singly-linked list.
+// #[derive(PartialEq, Eq, Clone, Debug)]
+// pub struct ListNode {
+//   pub val: i32,
+//   pub next: Option<Box<ListNode>>
+// }
+//
+// impl ListNode {
+//   #[inline]
+//   fn new(val: i32) -> Self {
+//     ListNode {
+//       next: None,
+//       val
+//     }
+//   }
+// }
+
+impl Solution {
+    pub fn add_two_numbers(
+        l1: Option<Box<ListNode>>,
+        l2: Option<Box<ListNode>>,
+    ) -> Option<Box<ListNode>> {
+        Solution::node_plus(l1, l2, 0)
+    }
+
+    pub fn node_plus(
+        node1: Option<Box<ListNode>>,
+        node2: Option<Box<ListNode>>,
+        carray: i32,
+    ) -> Option<Box<ListNode>> {
+        if let None = node1 {
+            if let None = node2 {
+                if carray > 0 {
+                    return Some(Box::new(ListNode {
+                        val: carray,
+                        next: None
+                    }))
+                }
+
+                return None;
+            }
+        }
+
+        let mut next1: Option<Box<ListNode>> = None;
+        let mut next2: Option<Box<ListNode>> = None;
+        let mut num1: i32 = 0;
+        let mut num2: i32 = 0;
+
+
+        match node1 {
+            Some(node) => {
+                num1 = node.val;
+                next1 = node.next;
+            }
+            None => {
+                next1 = None;
+                num1 = 0;
+            }
+        }
+
+        match node2 {
+            Some(node) => {
+                num2 = node.val;
+                next2 = node.next;
+            }
+            None => {
+                next2 = None;
+                num2 = 0;
+            }
+        }
+
+        let sum: i32 = (num1 + num2 + carray) % 10;
+        let new_carray: i32 = (num1 + num2 + carray) / 10;
+        // println!("{}, {}, {}, {}, {}", num1, num2, sum, carray, new_carray);
+
+        Some(Box::new(ListNode {
+            val: sum,
+            next: Solution::node_plus(next1, next2, new_carray),
+        }))
+    }
+}
+
+// @lc code=end
+
