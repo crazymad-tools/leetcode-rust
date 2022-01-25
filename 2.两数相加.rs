@@ -89,3 +89,42 @@ impl Solution {
 
 // @lc code=end
 
+
+fn getNodeList(nums: Vec<i32>) -> Option<Box<ListNode>> {
+    if nums.len() == 0 {
+        return None;
+    }
+
+    let next = getNodeList(nums[1..nums.len()].to_vec());
+
+    Some(Box::new(ListNode {
+        val: nums[0],
+        next: next,
+    }))
+}
+
+fn getArrayFromNodeList(list: Option<Box<ListNode>>) {
+
+    match list {
+        Some(node) => {
+            print!("{},", node.val);
+
+            getArrayFromNodeList(node.next);
+        }
+        None => {},
+    };
+}
+
+fn main() {
+    let arr1 = vec![2,4,9];
+    let arr2 = vec![5,6,4,9];
+
+    let nodes1 = getNodeList(arr1);
+    let nodes2 = getNodeList(arr2);
+
+    // println!("{:?}", nodes1);
+
+    let sum = Solution::add_two_numbers(nodes1, nodes2);
+    getArrayFromNodeList(sum);
+    // println!("{:?}", sum);
+}

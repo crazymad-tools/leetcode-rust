@@ -1,6 +1,10 @@
-use std::cmp;
+/*
+ * @lc app=leetcode.cn id=3 lang=rust
+ *
+ * [3] 无重复字符的最长子串
+ */
 
-struct Solution {}
+// @lc code=start
 
 impl Solution {
     pub fn length_of_longest_substring(s: String) -> i32 {
@@ -47,9 +51,5 @@ impl Solution {
         maxn
     }
 }
+// @lc code=end
 
-fn main() {
-    let len = Solution::length_of_longest_substring(String::from("hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"));
-
-    println!("len: {}", len);
-}
