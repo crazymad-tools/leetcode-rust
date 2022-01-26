@@ -1,6 +1,10 @@
-use std::{cmp, iter::FromIterator};
+/*
+ * @lc app=leetcode.cn id=7 lang=rust
+ *
+ * [7] 整数反转
+ */
 
-struct Solution {}
+// @lc code=start
 
 impl Solution {
     pub fn reverse(x: i32) -> i32 {
@@ -20,8 +24,6 @@ impl Solution {
         let maxn = 0x7fffffff; // 2147483647
         let minn = !maxn; // -2147483648
 
-        // println!("maxn: {}, minn: {}", maxn, minn);
-
         for ii in 0..digs.len() {
             let ten: i32 = 10;
             let power = (digs.len() - ii - 1) as u32;
@@ -30,7 +32,6 @@ impl Solution {
             }
 
             let addon = digs[ii] * ten.pow(power);
-            println!("current sum: {}", sum);
 
             if x > 0 {
                 if maxn - sum < addon {
@@ -49,8 +50,5 @@ impl Solution {
     }
 }
 
-fn main() {
-    let res = Solution::reverse(1534236469);
+// @lc code=end
 
-    println!("result: {}", res);
-}
