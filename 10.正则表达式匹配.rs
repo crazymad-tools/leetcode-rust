@@ -1,14 +1,10 @@
-use std::{cmp, iter::FromIterator};
+/*
+ * @lc app=leetcode.cn id=10 lang=rust
+ *
+ * [10] 正则表达式匹配
+ */
 
-struct Solution {}
-
-#[derive(Debug)]
-enum P_TYPE {
-    ONE,
-    MORE,
-}
-
-#[derive(Debug)]
+// @lc code=start
 struct Pattern {
     content: char,
     p_type: i32,
@@ -66,11 +62,6 @@ impl Solution {
         }
         let pattern = &patterns[p_idx];
 
-        // println!(
-        //     "match next, cc: {}, s_idx: {}, pattern: {:?}",
-        //     cc, s_idx, pattern
-        // );
-
         if cc != 0 as char && (cc == pattern.content || pattern.content == '.') {
             if pattern.p_type == 0 {
                 return Solution::match_next(p_idx + 1, s_idx + 1, chars, patterns, 0);
@@ -87,12 +78,5 @@ impl Solution {
         false
     }
 }
+// @lc code=end
 
-fn main() {
-    let s = String::from("a");
-    let p = String::from("ab*");
-
-    let res = Solution::is_match(s, p);
-
-    println!("result: {}", res);
-}
