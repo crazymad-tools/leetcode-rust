@@ -1,6 +1,10 @@
-use std::{cmp, iter::FromIterator};
+/*
+ * @lc app=leetcode.cn id=20 lang=rust
+ *
+ * [20] 有效的括号
+ */
 
-struct Solution {}
+// @lc code=start
 
 impl Solution {
     pub fn is_valid(s: String) -> bool {
@@ -36,10 +40,5 @@ impl Solution {
     }
 }
 
-fn main() {
-    let s = String::from("([[]]");
+// @lc code=end
 
-    let res = Solution::is_valid(s);
-
-    println!("{:?}", res);
-}
