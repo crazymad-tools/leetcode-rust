@@ -1,6 +1,10 @@
-use std::{cmp, iter::FromIterator};
+/*
+ * @lc app=leetcode.cn id=22 lang=rust
+ *
+ * [22] 括号生成
+ */
 
-struct Solution {}
+// @lc code=start
 impl Solution {
     pub fn generate_parenthesis(n: i32) -> Vec<String> {
         let mut results: Vec<String> = vec![];
@@ -30,8 +34,5 @@ impl Solution {
         }
     }
 }
-fn main() {
-    let res = Solution::generate_parenthesis(1);
+// @lc code=end
 
-    println!("{:?}", res);
-}
